@@ -29,11 +29,12 @@ room.add_source([1.5, 1.2, 0.5])
 R = np.array([[3.,   2.2],
               [2.25, 2.1],
               [0.6,  0.55]])
-fig, ax = room.plot()
 
-ax.set_xlim([0, 10])
-ax.set_ylim([0, 5])
-ax.set_zlim([0, 5])
+# fig, ax = room.plot()
+#
+# ax.set_xlim([0, 10])
+# ax.set_ylim([0, 5])
+# ax.set_zlim([0, 5])
 
 
 room.add_microphone_array(pra.MicrophoneArray(R, room.fs))
@@ -43,8 +44,10 @@ room.image_source_model(use_libroom=True)
 room.compute_rir()
 
 room.plot_rir()
+fig = plt.gcf()
+fig.set_size_inches(20, 10)
+room.plot()
 
 #show the room and the image sources
-room.plot()
 
 plt.show()
